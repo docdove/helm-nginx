@@ -24,8 +24,8 @@ spec:
           {{- toYaml .Values.resources | nindent 12 }}
         volumeMounts:
           - name: appsettings-dev-volume
-            mountPath: /tmp/appsettings.development.json
-            subPath: appsettings.development.json
+            mountPath: /tmp/{{ .Values.appsettingsFileName }}
+            subPath: {{ .Values.appsettingsFileName }}
       volumes:
         - name: appsettings-dev-volume
           configMap:

@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-appsettings-dev
 data:
-  appsettings.development.json: |
-{{ toYaml .Values.appSettingsDev | indent 4 }}
+  {{ .Values.appsettingsFileName }}: |
+    {{ toJson .Values.appsettingsFileContent | nindent 4 }}
