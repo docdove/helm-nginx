@@ -40,3 +40,26 @@ autoscaling:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
 
+appSettingsDev:
+  PostgresOptions:
+    ConnectionString: "Host=10.101.47.15:5432;Database=;User ID=usersql;Password=;"
+    EodDataScheme: "tariffs_db"
+  Dicts:
+    FI_Api: "http://localhost:5000/"
+  Serilog:
+    MinimumLevel:
+      Default: "Debug"
+      Override:
+        Microsoft: "Information"
+        System: "Information"
+    Filter:
+      - Name: "ByExcluding"
+        Args:
+          expression: "EndsWith(SourceContext, 'DefaultHttpClientFactory')"
+    WriteTo:
+      - Name: "Console"
+        Args:
+          outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}"
+          restrictedToMinimumLevel: "Information"
+    Enrich:
+      - "FromLogContext"

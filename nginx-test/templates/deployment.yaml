@@ -22,4 +22,12 @@ spec:
         - containerPort: 80
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
+        volumeMounts:
+          - name: appsettings-dev-volume
+            mountPath: /tmp/appsettings.development.json
+            subPath: appsettings.development.json
+    volumes:
+      - name: appsettings-dev-volume
+        configMap:
+          name: {{ .Release.Name }}-appsettings-dev
 
