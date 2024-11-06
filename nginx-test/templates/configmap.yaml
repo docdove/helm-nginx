@@ -4,4 +4,4 @@ metadata:
   name: {{ .Release.Name }}-appsettings-dev
 data:
   {{ .Values.appsettingsFileName }}: |
-    {{ toJson .Values.appsettingsFileContent | nindent 4 }}
+    {{ toJson .Values.appSettingsDev | nindent 4 }}
