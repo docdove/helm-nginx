@@ -40,6 +40,8 @@ autoscaling:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
 
+appsettingsFileName: "appsettings.docker.json"
+
 appSettingsDev:
   PostgresOptions:
     ConnectionString: "Host=10.101.47.15:5432;Database=;User ID=usersql;Password=;"
